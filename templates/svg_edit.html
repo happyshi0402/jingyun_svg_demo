@@ -1,0 +1,1545 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link rel="icon" type="image/png" href="https://c.runoob.com/more/svgeditor/images/logo.png">
+
+    <!--{if svg_edit_release}>
+      <link rel="stylesheet" href="css/method-draw.compiled.css" type="text/css"/>
+    <!{else}-->
+    <link rel="stylesheet" href="/static/svg_edit_css/jPicker.css" type="text/css">
+    <link rel="stylesheet" href="/static/svg_edit_css/jgraduate.css" type="text/css">
+    <link rel="stylesheet" href="/static/svg_edit_css/method-draw.css" type="text/css">
+    <link rel="stylesheet" href="/static/svg_edit_css/fonts.css" type="text/css">
+    <!--{endif}-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+
+
+    <script type="text/javascript" src="/static/jquery/jquery_002.js"></script>
+
+
+    <!--{if svg_edit_release}>
+      <script type="text/javascript" src="method-draw.compiled.js"></script>
+    <!{else}-->
+    <script type="text/javascript" src="/static/utils/pathseg.js"></script>
+    <script type="text/javascript" src="/static/svg_edit_js/touch.js"></script>
+    <script type="text/javascript" src="/static/jquery/jquery.js"></script>
+    <script type="text/javascript" src="/static/jquery/jquery_003.js"></script>
+    <script type="text/javascript" src="/static/jquery/jquery_005.js"></script>
+    <script type="text/javascript" src="/static/jquery/jquery_004.js"></script>
+    <script type="text/javascript" src="/static/jquery/jquery-ui-1.js"></script>
+    <script type="text/javascript" src="/static/utils/browser.js"></script>
+    <script type="text/javascript" src="/static/utils/svgtransformlist.js"></script>
+    <script type="text/javascript" src="/static/utils/math.js"></script>
+    <script type="text/javascript" src="/static/utils/units.js"></script>
+    <script type="text/javascript" src="/static/utils/svgutils.js"></script>
+    <script type="text/javascript" src="/static/utils/sanitize.js"></script>
+    <script type="text/javascript" src="/static/utils/history.js"></script>
+    <script type="text/javascript" src="/static/utils/select.js"></script>
+    <script type="text/javascript" src="/static/utils/draw.js"></script>
+    <script type="text/javascript" src="/static/utils/path.js"></script>
+    <script type="text/javascript" src="/static/svg_edit_js/dialog.js"></script>
+    <script type="text/javascript" src="/static/utils/svgcanvas.js"></script>
+    <script type="text/javascript" src="/static/utils/method-draw.js"></script>
+    <script type="text/javascript" src="/static/jquery/jquery-draginput.js"></script>
+    <script type="text/javascript" src="/static/utils/contextmenu.js"></script>
+    <script type="text/javascript" src="/static/utils/jpicker.js"></script>
+    <script type="text/javascript" src="/static/utils/mousewheel.js"></script>
+    <script type="text/javascript" src="/static/utils/ext-eyedropper.js"></script>
+    <script type="text/javascript" src="/static/utils/ext-shapes.js"></script>
+    <script type="text/javascript" src="/static/utils/ext-grid.js"></script>
+    <script type="text/javascript" src="/static/svg_edit_js/requestanimationframe.js"></script>
+    <script type="text/javascript" src="/static/utils/taphold.js"></script>
+    <script type="text/javascript" src="/static/utils/filesaver.js"></script>
+    <!--{endif}-->
+
+
+    <title>SVG 在线编辑器</title>
+</head>
+<body>
+<div id="svg_editor">
+
+    <div id="rulers">
+        <div id="ruler_corner"></div>
+        <div id="ruler_x">
+            <div id="ruler_x_cursor"></div>
+            <div style="width: 3390px;">
+                <canvas width="3390" height="15"></canvas>
+            </div>
+        </div>
+        <div id="ruler_y">
+            <div id="ruler_y_cursor"></div>
+            <div style="height: 800px;">
+                <canvas height="800" width="15"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="select" style="overflow: scroll; line-height: 318px;" id="workarea">
+        <div id="svgcanvas" style="position: relative; width: 1695px; height: 400px;">
+
+            <svg xlinkns="http://www.w3.org/1999/xlink" id="svgroot" height="400" width="1695">
+                <g transform="translate(557.5,0)" id="selectorParentGroup">
+                    <rect height="0" width="0" y="-84.5" x="398.5" style="pointer-events:none" display="none"
+                          stroke-dasharray="3,2" stroke="#666" fill="none" id="selectorRubberBand"></rect>
+                    <g display="none" transform="" id="selectorGroup0">
+                        <path d="M12.75,20.75 L93.25,20.75 93.25,107.25 12.75,107.25z" style="pointer-events:none"
+                              shape-rendering="crispEdges" stroke="#4F80FF" fill="none" id="selectedBox0"></path>
+                        <g display="none">
+                            <circle cy="16.75" cx="8.75" style="cursor:url(images/rotate.png) 12 12, auto;"
+                                    stroke-width="0" stroke-opacity="0" fill-opacity="0" stroke="#000" r="8" fill="#000"
+                                    id="selectorGrip_rotate_nw"></circle>
+                            <circle cy="16.75" cx="97.25" style="cursor:url(images/rotate.png) 12 12, auto;"
+                                    stroke-width="0" stroke-opacity="0" fill-opacity="0" stroke="#000" r="8" fill="#000"
+                                    id="selectorGrip_rotate_ne"></circle>
+                            <circle cy="111.25" cx="97.25" style="cursor:url(images/rotate.png) 12 12, auto;"
+                                    stroke-width="0" stroke-opacity="0" fill-opacity="0" stroke="#000" r="8" fill="#000"
+                                    id="selectorGrip_rotate_se"></circle>
+                            <circle cy="111.25" cx="8.75" style="cursor:url(images/rotate.png) 12 12, auto;"
+                                    stroke-width="0" stroke-opacity="0" fill-opacity="0" stroke="#000" r="8" fill="#000"
+                                    id="selectorGrip_rotate_sw"></circle>
+                            <rect y="17" x="9" pointer-events="all" style="cursor:nw-resize" stroke="rgba(0,0,0,0)"
+                                  fill="#4F80FF" height="8" width="8" id="selectorGrip_resize_nw"></rect>
+                            <rect y="17" x="49" pointer-events="all" style="cursor:n-resize" stroke="rgba(0,0,0,0)"
+                                  fill="#4F80FF" height="8" width="8" id="selectorGrip_resize_n"></rect>
+                            <rect y="17" x="89" pointer-events="all" style="cursor:ne-resize" stroke="rgba(0,0,0,0)"
+                                  fill="#4F80FF" height="8" width="8" id="selectorGrip_resize_ne"></rect>
+                            <rect y="60" x="89" pointer-events="all" style="cursor:e-resize" stroke="rgba(0,0,0,0)"
+                                  fill="#4F80FF" height="8" width="8" id="selectorGrip_resize_e"></rect>
+                            <rect y="103" x="89" pointer-events="all" style="cursor:se-resize" stroke="rgba(0,0,0,0)"
+                                  fill="#4F80FF" height="8" width="8" id="selectorGrip_resize_se"></rect>
+                            <rect y="103" x="49" pointer-events="all" style="cursor:s-resize" stroke="rgba(0,0,0,0)"
+                                  fill="#4F80FF" height="8" width="8" id="selectorGrip_resize_s"></rect>
+                            <rect y="103" x="9" pointer-events="all" style="cursor:sw-resize" stroke="rgba(0,0,0,0)"
+                                  fill="#4F80FF" height="8" width="8" id="selectorGrip_resize_sw"></rect>
+                            <rect y="60" x="9" pointer-events="all" style="cursor:w-resize" stroke="rgba(0,0,0,0)"
+                                  fill="#4F80FF" height="8" width="8" id="selectorGrip_resize_w"></rect>
+                        </g>
+                    </g>
+                    <g id="pathpointgrip_container">
+                        <rect y="210" x="74"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_0"></rect>
+                        <circle cy="341.5" cx="171.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_1c1"></circle>
+                        <circle cy="151.5" cx="69.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_0c2"></circle>
+                        <line display="none" y2="151.5" y1="151.5" x2="69.5" x1="69.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_1"></line>
+                        <line display="none" y2="151.5" y1="151.5" x2="69.5" x1="69.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_2"></line>
+                        <rect y="378" x="209"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_1"></rect>
+                        <rect y="340.5" x="346.5"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_2"></rect>
+                        <rect y="401" x="394"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_3"></rect>
+                        <rect y="377.5" x="480.5"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_4"></rect>
+                        <rect y="325.5" x="499.5"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_5"></rect>
+                        <rect y="207.5" x="502.5"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_6"></rect>
+                        <rect y="129.5" x="441.5"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_7"></rect>
+                        <rect y="148.5" x="229.5"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_8"></rect>
+                        <rect y="277.5" x="161.5"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#fff" height="5" width="5" display="none"
+                              id="pathpointgrip_9"></rect>
+                        <line display="none" y2="341.5" x2="171.5" y1="341.5" x1="171.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_1c1"></line>
+                        <line display="none" y2="380.5" x2="211.5" y1="378.5" x1="211.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_1c2"></line>
+                        <circle cy="378.5" cx="211.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_1c2"></circle>
+                        <path d="M76.5,212.5 C76.5,212.5 116.5,249.5 116.5,251.5" style="pointer-events:none"
+                              stroke-width="2" shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none"
+                              display="none" id="segline_1"></path>
+                        <line display="none" y2="380.5" x2="211.5" y1="382.5" x1="211.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_2c1"></line>
+                        <circle cy="382.5" cx="211.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_2c1"></circle>
+                        <line display="none" y2="343" x2="349" y1="343.5" x1="349.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_2c2"></line>
+                        <circle cy="343.5" cx="349.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_2c2"></circle>
+                        <path d="M211.5,380.5 C211.5,382.5 349.5,343.5 349,343" style="pointer-events:none"
+                              stroke-width="2" shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none"
+                              display="none" id="segline_2"></path>
+                        <line display="none" y2="343" x2="349" y1="343.5" x1="349.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_3c1"></line>
+                        <circle cy="343.5" cx="349.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_3c1"></circle>
+                        <line display="none" y2="403.5" x2="396.5" y1="403.5" x1="395.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_3c2"></line>
+                        <circle cy="403.5" cx="395.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_3c2"></circle>
+                        <path d="M349,343 C349.5,343.5 395.5,403.5 396.5,403.5" style="pointer-events:none"
+                              stroke-width="2" shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none"
+                              display="none" id="segline_3"></path>
+                        <line display="none" y2="403.5" x2="396.5" y1="403.5" x1="397.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_4c1"></line>
+                        <circle cy="403.5" cx="397.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_4c1"></circle>
+                        <line display="none" y2="380" x2="483" y1="380.5" x1="483.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_4c2"></line>
+                        <circle cy="380.5" cx="483.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_4c2"></circle>
+                        <path d="M396.5,403.5 C397.5,403.5 483.5,380.5 483,380" style="pointer-events:none"
+                              stroke-width="2" shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none"
+                              display="none" id="segline_4"></path>
+                        <line display="none" y2="380" x2="483" y1="380.5" x1="483.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_5c1"></line>
+                        <circle cy="380.5" cx="483.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_5c1"></circle>
+                        <line display="none" y2="328" x2="502" y1="328.5" x1="502.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_5c2"></line>
+                        <circle cy="328.5" cx="502.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_5c2"></circle>
+                        <path d="M483,380 C483.5,380.5 502.5,328.5 502,328" style="pointer-events:none" stroke-width="2"
+                              shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none" display="none"
+                              id="segline_5"></path>
+                        <line display="none" y2="328" x2="502" y1="328.5" x1="502.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_6c1"></line>
+                        <circle cy="328.5" cx="502.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_6c1"></circle>
+                        <line display="none" y2="210" x2="505" y1="210.5" x1="505.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_6c2"></line>
+                        <circle cy="210.5" cx="505.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_6c2"></circle>
+                        <path d="M502,328 C502.5,328.5 505.5,210.5 505,210" style="pointer-events:none" stroke-width="2"
+                              shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none" display="none"
+                              id="segline_6"></path>
+                        <line display="none" y2="210" x2="505" y1="210.5" x1="505.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_7c1"></line>
+                        <circle cy="210.5" cx="505.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_7c1"></circle>
+                        <line display="none" y2="132" x2="444" y1="132.5" x1="444.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_7c2"></line>
+                        <circle cy="132.5" cx="444.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_7c2"></circle>
+                        <path d="M505,210 C505.5,210.5 444.5,132.5 444,132" style="pointer-events:none" stroke-width="2"
+                              shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none" display="none"
+                              id="segline_7"></path>
+                        <line display="none" y2="132" x2="444" y1="132.5" x1="444.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_8c1"></line>
+                        <circle cy="132.5" cx="444.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_8c1"></circle>
+                        <line display="none" y2="151" x2="232" y1="151.5" x1="232.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_8c2"></line>
+                        <circle cy="151.5" cx="232.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_8c2"></circle>
+                        <path d="M444,132 C444.5,132.5 232.5,151.5 232,151" style="pointer-events:none" stroke-width="2"
+                              shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none" display="none"
+                              id="segline_8"></path>
+                        <line display="none" y2="151" x2="232" y1="151.5" x1="232.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_9c1"></line>
+                        <circle cy="151.5" cx="232.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_9c1"></circle>
+                        <line display="none" y2="280" x2="164" y1="280.5" x1="164.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_9c2"></line>
+                        <circle cy="280.5" cx="164.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_9c2"></circle>
+                        <path d="M232,151 C232.5,151.5 164.5,280.5 164,280" style="pointer-events:none" stroke-width="2"
+                              shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none" display="none"
+                              id="segline_9"></path>
+                        <rect y="339" x="169"
+                              xlink:title="Drag node to move it. Double-click node to change segment type"
+                              style="pointer-events:all" cursor="move" stroke-width="1" shape-rendering="crispEdges"
+                              stroke="#4F80FF" fill="#4F80FF" height="5" width="5" display="none"
+                              id="pathpointgrip_10"></rect>
+                        <line display="none" y2="280" x2="164" y1="280.5" x1="164.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_10c1"></line>
+                        <circle cy="280.5" cx="164.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_10c1"></circle>
+                        <line display="none" y2="341.5" x2="171.5" y1="341.5" x1="171.5" style="pointer-events:none"
+                              stroke-width="1" stroke="#4F80FF" id="ctrlLine_10c2"></line>
+                        <circle cy="341.5" cx="171.5" xlink:title="Drag control point to adjust curve properties"
+                                style="pointer-events:all" cursor="move" stroke-width="3" stroke-opacity="0"
+                                stroke="#4F80FF" fill="#4F80FF" r="3" display="none" id="ctrlpointgrip_10c2"></circle>
+                        <path d="M164,280 C164.5,280.5 171.5,341.5 171.5,341.5" style="pointer-events:none"
+                              stroke-width="2" shape-rendering="crispEdges" stroke-opacity="1" stroke="#0ff" fill="none"
+                              display="none" id="segline_10"></path>
+                    </g>
+                </g>
+            </svg>
+        </div>
+    </div>
+
+    <div class="" id="menu_bar">
+        <a class="menu open">
+            <div class="menu_title" id="logo">
+                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="15" width="15"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                    <svg version="1.1" viewBox="0 0 16 16">
+                        <path fill="#cccccc" stroke-width="1.5" stroke-dasharray="null" stroke-linejoin="null"
+                              stroke-linecap="null" d="m-0.0965,16.1043l16.10001,-16.06917l-0.00001,16.06917l-16.1,0z"
+                              id="svg_7"></path>
+                        <path fill="#666666" stroke-width="1.5" stroke-dasharray="null" stroke-linejoin="null"
+                              stroke-linecap="null" d="m0.0035,16.10449l0,-15.99999l16,15.99999l-16,0z"
+                              id="svg_6"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div class="menu_list">
+                <div id="tool_about" class="menu_item">编辑器说明...</div>
+                <div class="separator"></div>
+                <div id="tool_about" class="menu_item">快捷键...</div>
+            </div>
+        </a>
+
+        <div class="menu">
+            <div class="menu_title">文件</div>
+            <div class="menu_list" id="file_menu">
+                <div id="tool_clear" class="menu_item">新建文档</div>
+                <div id="tool_open" class="menu_item" style=""><input type="file">
+                    <div id="fileinputs"></div>
+                    打开 SVG...
+                </div>
+                <div id="tool_import" class="menu_item" style=""><input type="file">
+                    <div id="fileinputs_import"></div>
+                    导入图片...
+                </div>
+                <div id="tool_save" class="menu_item">保存图片... <span class="shortcut">Ctrl+S</span></div>
+                <div id="tool_export" class="menu_item">导出 PNG</div>
+            </div>
+        </div>
+
+        <div class="menu">
+            <div class="menu_title">编辑</div>
+            <div class="menu_list" id="edit_menu">
+                <div class="menu_item" id="tool_undo">撤销 <span class="shortcut">Ctrl+Z</span></div>
+                <div class="menu_item disabled" id="tool_redo">重做 <span class="shortcut">Ctrl+Y</span></div>
+                <div class="separator"></div>
+                <div class="menu_item action_selected" id="tool_cut">剪切 <span class="shortcut">Ctrl+X</span></div>
+                <div class="menu_item action_selected" id="tool_copy">复制 <span class="shortcut">Ctrl+C</span></div>
+                <div class="menu_item action_selected" id="tool_paste">粘贴 <span class="shortcut">Ctrl+V</span></div>
+                <div class="menu_item action_selected" id="tool_clone">复制并粘贴 <span class="shortcut">Ctrl+D</span></div>
+                <div class="menu_item action_selected" id="tool_delete">删除 <span>⌫</span></div>
+            </div>
+        </div>
+
+        <div class="menu">
+            <div class="menu_title">对象</div>
+            <div class="menu_list" id="object_menu">
+                <div class="menu_item action_selected" id="tool_move_top">置于顶层 <span class="shortcut">Ctrl+⇧↑</span>
+                </div>
+                <div class="menu_item action_selected" id="tool_move_up">置于上一层 <span class="shortcut">Ctrl+↑</span>
+                </div>
+                <div class="menu_item action_selected" id="tool_move_down">置于下一层 <span class="shortcut">Ctrl+↓</span>
+                </div>
+                <div class="menu_item action_selected" id="tool_move_bottom">置于底层 <span class="shortcut">Ctrl+⇧↓</span>
+                </div>
+                <div class="separator"></div>
+                <div class="menu_item action_multi_selected disabled" id="tool_group">合并所选对象 <span class="shortcut">Ctrl+G</span>
+                </div>
+                <div class="menu_item action_group_selected disabled" id="tool_ungroup">解除合并 <span class="shortcut">Ctrl+⇧G</span>
+                </div>
+                <div class="separator"></div>
+                <div class="menu_item action_path_convert_selected" id="tool_topath">转为 Path</div>
+                <div class="menu_item action_path_selected disabled" id="tool_reorient">重新调整 path</div>
+            </div>
+        </div>
+
+        <div class="menu">
+            <div class="menu_title">视图</div>
+            <div class="menu_list" id="view_menu">
+                <div class="menu_item push_button_pressed" id="tool_rulers">显示刻度尺</div>
+                <div class="menu_item" id="tool_wireframe">显示 Wireframe</div>
+                <div class="menu_item tool_button loaded" title="View Grid" id="view_grid">View Grid</div>
+                <div class="menu_item" id="tool_snap">网格对齐</div>
+                <div class="separator"></div>
+                <div class="menu_item" id="tool_source">源代码... <span class="shortcut">Ctrl+U</span></div>
+            </div>
+        </div>
+
+
+    </div>
+
+    <div id="tools_top" class="tools_panel">
+
+        <div style="display: block;" id="canvas_panel" class="context_panel">
+
+            <h4 class="clearfix">Canvas</h4>
+
+            <label class="draginput" data-title="Change canvas width">
+                <input value="580" data-cursor="false" data-domain="70" data-scale="28.571428571428573"
+                       readonly="readonly" autocomplete="off" size="3" id="canvas_width" pattern="[0-9]*" type="text">
+                <span class="icon_label">Width</span>
+            </label>
+            <label class="draginput" data-title="Change canvas height">
+                <input value="400" data-cursor="false" data-domain="70" data-scale="28.571428571428573"
+                       readonly="readonly" autocomplete="off" id="canvas_height" size="3" pattern="[0-9]*" type="text">
+                <span class="icon_label">Height</span>
+            </label>
+
+
+            <label data-title="Change canvas color" class="draginput">
+                <span>Color</span>
+                <div id="color_canvas_tools">
+                    <div class="color_tool active" id="tool_canvas">
+                        <div class="color_block">
+                            <div id="canvas_bg"></div>
+                            <div id="canvas_color">
+                                <svg width="60.5" xmlns="http://www.w3.org/2000/svg">
+                                    <rect opacity="1" fill="#fff" height="100%" width="100%"></rect>
+                                    <defs>
+                                        <linearGradient id="gradbox_"></linearGradient>
+                                    </defs>
+                                </svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </label>
+
+            <div class="draginput">
+                <span>Sizes</span>
+                <select autocomplete="off" id="resolution">
+                    <option id="selectedPredefined" selected="selected">Custom</option>
+                    <option>640x480</option>
+                    <option>800x600</option>
+                    <option>1024x768</option>
+                    <option>1280x960</option>
+                    <option>1600x1200</option>
+                    <option id="fitToContent" value="content">Fit to Content</option>
+                </select>
+                <div class="caret"></div>
+                <label id="resolution_label">Custom</label>
+            </div>
+
+        </div>
+
+        <div style="display: none;" id="rect_panel" class="context_panel">
+            <h4 class="clearfix">Rectangle</h4>
+            <label class="draginput">
+                <input value="158" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="rect_x" class="attr_changer"
+                       data-title="Change X coordinate" size="3" data-attr="x" pattern="[0-9]*">
+                <span>X</span>
+            </label>
+            <label class="draginput">
+                <input value="61" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="rect_y" class="attr_changer"
+                       data-title="Change Y coordinate" size="3" data-attr="y" pattern="[0-9]*">
+                <span>Y</span>
+            </label>
+            <label class="draginput" id="rect_width_tool attr_changer" data-title="Change rectangle width">
+                <input value="132" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="rect_width" class="attr_changer" size="3"
+                       data-attr="width" pattern="[0-9]*" type="text">
+                <span class="icon_label">Width</span>
+            </label>
+            <label class="draginput" id="rect_height_tool" data-title="Change rectangle height">
+                <input value="103" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="rect_height" class="attr_changer" size="3"
+                       data-attr="height" pattern="[0-9]*" type="text">
+                <span class="icon_label">Height</span>
+            </label>
+        </div>
+
+        <div style="display: none;" id="path_panel" class="context_panel clearfix">
+            <h4 class="clearfix">Path</h4>
+            <label class="draginput">
+                <input value="163" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="path_x" class="attr_changer"
+                       data-title="Change ellipse's cx coordinate" size="3" data-attr="x" pattern="[0-9]*">
+                <span>X</span>
+            </label>
+            <label class="draginput">
+                <input value="131" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="path_y" class="attr_changer"
+                       data-title="Change ellipse's cy coordinate" size="3" data-attr="y" pattern="[0-9]*">
+                <span>Y</span>
+            </label>
+        </div>
+
+        <div style="display: none;" id="image_panel" class="context_panel clearfix">
+            <h4>Image</h4>
+            <label class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="image_x" class="attr_changer" data-title="Change X coordinate" size="3"
+                       data-attr="x" pattern="[0-9]*">
+                <span>X</span>
+            </label>
+            <label class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="image_y" class="attr_changer" data-title="Change Y coordinate" size="3"
+                       data-attr="y" pattern="[0-9]*">
+                <span>Y</span>
+            </label>
+            <label class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="image_width" class="attr_changer" data-title="Change image width" size="3"
+                       data-attr="width" pattern="[0-9]*">
+                <span class="icon_label">Width</span>
+            </label>
+            <label class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="image_height" class="attr_changer" data-title="Change image height"
+                       size="3" data-attr="height" pattern="[0-9]*">
+                <span class="icon_label">Height</span>
+            </label>
+        </div>
+
+        <div style="display: none;" id="circle_panel" class="context_panel">
+            <h4>Circle</h4>
+            <label class="draginput" id="tool_circle_cx">
+                <span>Center X</span>
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="circle_cx" class="attr_changer" title="Change circle's cx coordinate"
+                       size="3" data-attr="cx">
+            </label>
+            <label class="draginput" id="tool_circle_cy">
+                <span>Center Y</span>
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="circle_cy" class="attr_changer" title="Change circle's cy coordinate"
+                       size="3" data-attr="cy">
+            </label>
+            <label class="draginput" id="tool_circle_r">
+                <span>Radius</span>
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="circle_r" class="attr_changer" title="Change circle's radius" size="3"
+                       data-attr="r">
+            </label>
+        </div>
+
+        <div style="display: none;" id="ellipse_panel" class="context_panel clearfix">
+            <h4>Ellipse</h4>
+            <label class="draginput" id="tool_ellipse_cx">
+                <input value="53" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="ellipse_cx" class="attr_changer"
+                       data-title="Change ellipse's cx coordinate" size="3" data-attr="cx" pattern="[0-9]*">
+                <span>X</span>
+            </label>
+            <label class="draginput" id="tool_ellipse_cy">
+                <input value="64" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="ellipse_cy" class="attr_changer"
+                       data-title="Change ellipse's cy coordinate" size="3" data-attr="cy" pattern="[0-9]*">
+                <span>Y</span>
+            </label>
+            <label class="draginput" id="tool_ellipse_rx">
+                <input value="38" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="ellipse_rx" class="attr_changer"
+                       data-title="Change ellipse's x radius" size="3" data-attr="rx" pattern="[0-9]*">
+                <span>Radius X</span>
+            </label>
+            <label class="draginput" id="tool_ellipse_ry">
+                <input value="42" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="ellipse_ry" class="attr_changer"
+                       data-title="Change ellipse's y radius" size="3" data-attr="ry" pattern="[0-9]*">
+                <span>Radius Y</span>
+            </label>
+        </div>
+
+        <div style="display: none;" id="line_panel" class="context_panel clearfix">
+            <h4>Line</h4>
+            <label class="draginput" id="tool_line_x1">
+                <input value="90" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="line_x1" class="attr_changer"
+                       data-title="Change line's starting x coordinate" size="3" data-attr="x1" pattern="[0-9]*">
+                <span>Start X</span>
+            </label>
+            <label class="draginput" id="tool_line_y1">
+                <input value="81" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="line_y1" class="attr_changer"
+                       data-title="Change line's starting y coordinate" size="3" data-attr="y1" pattern="[0-9]*">
+                <span>Start Y</span>
+            </label>
+            <label class="draginput" id="tool_line_x2">
+                <input value="148" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="line_x2" class="attr_changer"
+                       data-title="Change line's ending x coordinate" size="3" data-attr="x2" pattern="[0-9]*">
+                <span>End X</span>
+            </label>
+            <label class="draginput" id="tool_line_y2">
+                <input value="113" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="line_y2" class="attr_changer"
+                       data-title="Change line's ending y coordinate" size="3" data-attr="y2" pattern="[0-9]*">
+                <span>End Y</span>
+            </label>
+        </div>
+
+        <div style="display: none;" id="text_panel" class="context_panel">
+            <h4>Text</h4>
+            <label class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="text_x" class="attr_changer" data-title="Change text x coordinate"
+                       size="3" data-attr="x" pattern="[0-9]*">
+                <span>X</span>
+            </label>
+            <label class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="text_y" class="attr_changer" data-title="Change text y coordinate"
+                       size="3" data-attr="y" pattern="[0-9]*">
+                <span>Y</span>
+            </label>
+
+            <div class="toolset draginput select twocol" id="tool_font_family">
+                <!-- Font family -->
+                <span>Font</span>
+                <div id="preview_font" style="font-family: Helvetica, Arial, sans-serif;">Helvetica</div>
+                <div class="caret"></div>
+                <input autocomplete="off" id="font_family" data-title="Change Font Family" size="12" type="hidden">
+                <select autocomplete="off" id="font_family_dropdown">
+                    <option value="Arvo, sans-serif">Arvo</option>
+                    <option value="'Courier New', Courier, monospace">Courier</option>
+                    <option value="Euphoria, sans-serif">Euphoria</option>
+                    <option value="Georgia, Times, 'Times New Roman', serif">Georgia</option>
+                    <option value="Helvetica, Arial, sans-serif" selected="selected">Helvetica</option>
+                    <option value="Junction, sans-serif">Junction</option>
+                    <option value="'League Gothic', sans-serif">League Gothic</option>
+                    <option value="Oswald, sans-serif">Oswald</option>
+                    <option value="'Palatino Linotype', 'Book Antiqua', Palatino, serif">Palatino</option>
+                    <option value="'Trebuchet MS', Gadget, sans-serif">Trebuchet</option>
+                    <option value="'Shadows Into Light', serif">Shadows Into Light</option>
+                    <option value="'Simonetta', serif">Simonetta</option>
+                    <option value="'Times New Roman', Times, serif">Times</option>
+                </select>
+                <div class="tool_button loaded" id="tool_bold" data-title="Bold Text [B]">B</div>
+                <div class="tool_button loaded" id="tool_italic" data-title="Italic Text [I]">i</div>
+            </div>
+
+            <label class="draginput" id="tool_font_size" data-title="Change Font Size">
+                <input data-cursor="true" data-domain="70" data-scale="3.557142857142857" readonly="readonly"
+                       autocomplete="off" id="font_size" size="3" value="0">
+                <span id="font_sizeLabel" class="icon_label">Font Size</span>
+                <div style="top: 70px;" class="draginput_cursor"></div>
+            </label>
+            <!-- Not visible, but still used -->
+            <input autocomplete="off" id="text" size="35" type="text">
+        </div>
+
+        <!-- formerly gsvg_panel -->
+        <div style="display: none;" id="container_panel" class="context_panel clearfix">
+        </div>
+
+        <div style="display: none;" id="use_panel" class="context_panel clearfix">
+            <div class="tool_button clearfix loaded" id="tool_unlink_use"
+                 data-title="Break link to reference element (make unique)">Break link reference
+            </div>
+        </div>
+
+        <div style="display: none;" id="g_panel" class="context_panel clearfix">
+            <h4>Group</h4>
+            <label class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="g_x" class="attr_changer" data-title="Change groups's x coordinate"
+                       size="3" data-attr="x" pattern="[0-9]*">
+                <span>X</span>
+            </label>
+            <label class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="2.857142857142857" readonly="readonly"
+                       autocomplete="off" id="g_y" class="attr_changer" data-title="Change groups's y coordinate"
+                       size="3" data-attr="y" pattern="[0-9]*">
+                <span>Y</span>
+            </label>
+        </div>
+
+        <div style="display: none;" id="path_node_panel" class="context_panel clearfix">
+            <h4>Edit Path</h4>
+
+            <label class="draginput" id="tool_node_x">
+                <input value="77" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="path_node_x" class="attr_changer"
+                       data-title="Change node's x coordinate" size="3" data-attr="x">
+                <span>X</span>
+            </label>
+            <label class="draginput" id="tool_node_y">
+                <input value="213" data-cursor="false" data-domain="70" data-scale="2.857142857142857"
+                       readonly="readonly" autocomplete="off" id="path_node_y" class="attr_changer"
+                       data-title="Change node's y coordinate" size="3" data-attr="y">
+                <span>Y</span>
+            </label>
+
+            <div id="segment_type" class="draginput label">
+                <span>Segment Type</span>
+                <select autocomplete="off" id="seg_type" data-title="Change Segment type">
+                    <option id="straight_segments" value="4">Straight</option>
+                    <option selected="selected" id="curve_segments" value="6">Curve</option>
+                </select>
+                <div class="caret"></div>
+                <label id="seg_type_label">Curve</label>
+            </div>
+
+            <!--
+            <label class="draginput checkbox" data-title="Link Control Points">
+              <span>Linked Control Points</span>
+              <div class="push_bottom"><input type="checkbox" id="tool_node_link" checked="checked" /></div>
+            </label>
+          -->
+
+            <div class="clearfix"></div>
+            <div class="tool_button loaded" id="tool_node_clone" title="Adds a node">Add Node
+                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="none" stroke="#8dd35f"
+                              d="m4.1953,19.42128c15.49391,-15.53349 -0.21065,0.1581 15.61084,-15.57944" id="svg_102"
+                              stroke-width="2"></path>
+                        <circle cx="19.75" cy="4" r="2.26172" fill="#00ffff" stroke="#0000ff" id="svg_121"
+                                stroke-width="0.5"></circle>
+                        <circle cx="4.0653" cy="19.40299" r="2.26172" fill="#00ffff" stroke="#0000ff" stroke-width="0.5"
+                                id="svg_123"></circle>
+                        <circle cx="11.9375" cy="11.625" r="2.26172" fill="#00ffff" stroke="#0000ff" stroke-width="0.5"
+                                id="svg_7"></circle>
+                        <line fill="#0000ff" stroke="#0000ff" stroke-width="2" stroke-dasharray="null" x1="9.7824"
+                              y1="4.02238" x2="9.66571" y2="14.46579" id="svg_5" stroke-linecap="round"></line>
+                        <line fill="#0000ff" stroke="#0000ff" stroke-width="2" stroke-dasharray="null" x1="4.47318"
+                              y1="9.3943" x2="15.14996" y2="9.45264" id="svg_4" stroke-linecap="round"></line>
+                    </svg>
+                </svg>
+            </div>
+            <div class="tool_button loaded" id="tool_node_delete" title="Delete Node">Delete Node
+                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path fill="none" stroke="#8dd35f"
+                              d="m4.1953,19.42128c15.49391,-15.53349 -0.21065,0.1581 15.61084,-15.57944" id="svg_102"
+                              stroke-width="2"></path>
+                        <circle cx="19.75" cy="4" r="2.26172" fill="#00ffff" stroke="#0000ff" id="svg_121"
+                                stroke-width="0.5"></circle>
+                        <circle cx="4.0653" cy="19.40299" r="2.26172" fill="#00ffff" stroke="#0000ff" stroke-width="0.5"
+                                id="svg_123"></circle>
+                        <circle cx="11.9375" cy="11.625" r="2.26172" fill="#00ffff" stroke="#0000ff" stroke-width="0.5"
+                                id="svg_7"></circle>
+                        <g id="svg_6" transform="rotate(-45.291072845458984 9.81157112121582,9.244086265563965) ">
+                            <line fill="none" stroke="#ff0000" stroke-width="2" stroke-dasharray="null" x1="4.47318"
+                                  y1="9.3943" x2="15.14996" y2="9.45264" id="svg_4" stroke-linecap="round"></line>
+                            <line fill="none" stroke="#ff0000" stroke-width="2" stroke-dasharray="null" x1="9.7824"
+                                  y1="4.02238" x2="9.66571" y2="14.46579" id="svg_5" stroke-linecap="round"></line>
+                        </g>
+                    </svg>
+                </svg>
+            </div>
+            <div class="tool_button loaded" id="tool_openclose_path" title="Open/close sub-path">Open Path
+                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                    <svg xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300">
+                        <g>
+                            <path d="m123.5,38l-84,106l27,115l166,2l29,-111" fill="#ffc8c8" stroke-width="15"
+                                  stroke="#000"></path>
+                            <line fill="none" stroke-width="10" stroke="#000" y2="24" x2="108.5" y1="153"
+                                  x1="276.5"></line>
+                            <g fill="#0ff" stroke="#00f" stroke-width="15">
+                                <circle cx="123" cy="41" r="30"></circle>
+                                <circle cx="40" cy="146" r="30"></circle>
+                                <circle cx="69" cy="260" r="30"></circle>
+                                <circle cx="228" cy="260" r="30"></circle>
+                                <circle cx="260" cy="148" r="30"></circle>
+                            </g>
+                            <g fill="none" stroke-width="15" stroke="#A00">
+                                <line y2="150" x2="210" y1="24" x1="168"></line>
+                                <line y2="150" x2="168" y1="24" x1="210"></line>
+                            </g>
+                        </g>
+                    </svg>
+                </svg>
+            </div>
+            <!--<div class="tool_button" id="tool_add_subpath" title="Add sub-path"></div>-->
+        </div>
+
+        <!-- Buttons when a single element is selected -->
+        <div style="display: none;" id="selected_panel" class="context_panel">
+
+            <label id="tool_angle" data-title="Change rotation angle" class="draginput">
+                <input data-cursor="false" data-domain="70" data-scale="5.142857142857143" readonly="readonly"
+                       autocomplete="off" id="angle" class="attr_changer" size="2" value="0" data-attr="transform"
+                       data-min="-180" data-max="180" type="text">
+                <span class="icon_label">Rotation</span>
+                <div id="tool_angle_indicator">
+                    <div id="tool_angle_indicator_cursor"></div>
+                </div>
+            </label>
+
+            <label class="toolset draginput" id="tool_opacity" data-title="Change selected item opacity">
+                <input data-cursor="true" data-domain="70" data-scale="1.4285714285714284" readonly="readonly"
+                       autocomplete="off" id="group_opacity" class="attr_changer" data-attr="opacity"
+                       data-multiplier="0.01" size="3" value="100" step="5" min="0" max="100">
+                <span id="group_opacityLabel" class="icon_label">Opacity</span>
+                <div style="top: -1.42109e-14px;" class="draginput_cursor"></div>
+            </label>
+
+            <div class="toolset" id="tool_blur" data-title="Change gaussian blur value">
+                <label class="draginput">
+                    <input data-cursor="true" data-domain="70" data-scale="0.14285714285714288" readonly="readonly"
+                           autocomplete="off" id="blur" size="2" value="0" step=".1" min="0" max="10">
+                    <span class="icon_label">Blur</span>
+                    <div style="top: 70px;" class="draginput_cursor"></div>
+                </label>
+            </div>
+
+            <label style="display: none;" class="draginput" id="cornerRadiusLabel"
+                   data-title="Change Rectangle Corner Radius">
+                <input data-cursor="true" data-domain="70" data-scale="1.4285714285714286" readonly="readonly"
+                       autocomplete="off" id="rect_rx" size="3" value="0" data-attr="rx" class="attr_changer"
+                       pattern="[0-9]*" type="text">
+                <span class="icon_label">Roundness</span>
+                <div style="top: 70px;" class="draginput_cursor"></div>
+            </label>
+
+            <div class="clearfix"></div>
+            <div id="align_tools">
+                <h4>Align</h4>
+                <div class="toolset align_buttons" id="tool_position">
+                    <label>
+                        <div class="col last clear" id="position_opts">
+                            <div class="draginput_cell" id="tool_posleft" title="Align Left">
+                                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                                    <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 27 27">
+		<path fill="#3f3f3c" d="M 2 1 L 2 5 L 14 5 L 14 11 L 2 11 L 2 16 L 20 16 L 20 22 L 2 22 L 2 26 L 1 26 L 1 1 L 2 1 ZM 27 0 L 0 0 L 0 27 L 27 27 L 27 0 Z"></path>
+	</svg>
+                                </svg>
+                            </div>
+                            <div class="draginput_cell" id="tool_poscenter" title="Align Center">
+                                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                                    <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27">
+			<path fill="#3f3f3c" d="M 13 1 L 14 1 L 14 6 L 22 6 L 22 12 L 14 12 L 14 15 L 19 15 L 19 21 L 14 21 L 14 26 L 13 26 L 13 21 L 8 21 L 8 15 L 13 15 L 13 12 L 5 12 L 5 6 L 13 6 L 13 1 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z"></path>
+
+	</svg>
+                                </svg>
+                            </div>
+                            <div class="draginput_cell" id="tool_posright" title="Align Right">
+                                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                                    <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27">
+		<path fill="#3f3f3c" d="M 25 1 L 25 5 L 13 5 L 13 11 L 25 11 L 25 16 L 7 16 L 7 22 L 25 22 L 25 26 L 26 26 L 26 1 L 25 1 ZM 0 0 L 27 0 L 27 27 L 0 27 L 0 0 Z"></path>
+	</svg>
+                                </svg>
+                            </div>
+                            <div class="draginput_cell" id="tool_postop" title="Align Top">
+                                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                                    <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="Untitled-Page%201">
+		<path fill="#3f3f3c" d="M 1 2 L 5 2 L 5 14 L 11 14 L 11 2 L 16 2 L 16 20 L 22 20 L 22 2 L 26 2 L 26 1 L 1 1 L 1 2 ZM 0 27 L 0 0 L 27 0 L 27 27 L 0 27 Z"></path>
+	</svg>
+                                </svg>
+                            </div>
+                            <div class="draginput_cell" id="tool_posmiddle" title="Align Middle">
+                                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                                    <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="Untitled-Page%201">
+	<path fill="#3f3f3c" d="M 26 13 L 26 14 L 21 14 L 21 22 L 15 22 L 15 14 L 12 14 L 12 19 L 6 19 L 6 14 L 1 14 L 1 13 L 6 13 L 6 8 L 12 8 L 12 13 L 15 13 L 15 5 L 21 5 L 21 13 L 26 13 ZM 27 0 L 0 0 L 0 27 L 27 27 L 27 0 Z"></path>
+</svg>
+                                </svg>
+                            </div>
+                            <div class="draginput_cell" id="tool_posbottom" title="Align Bottom">
+                                <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                                     xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                                    <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="Untitled-Page%201">
+	<path fill="#3f3f3c" d="M 1 25 L 5 25 L 5 13 L 11 13 L 11 25 L 16 25 L 16 7 L 22 7 L 22 25 L 26 25 L 26 26 L 1 26 L 1 25 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z"></path>
+</svg>
+                                </svg>
+                            </div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <!-- Buttons when multiple elements are selected -->
+        <div style="display: none;" id="multiselected_panel" class="context_panel clearfix">
+            <h4 class="hidable">Multiple Elements</h4>
+
+            <div class="toolset align_buttons" style="position: relative">
+                <label id="tool_align_relative" style="margin-top: 10px;">
+                    <select autocomplete="off" id="align_relative_to" title="Align relative to ...">
+                        <option selected="selected" id="selected_objects" value="selected">Align to objects</option>
+                        <option id="page" value="page">Align to page</option>
+                    </select>
+                </label>
+                <h4>.</h4>
+                <div class="col last clear">
+                    <div class="draginput_cell" id="tool_alignleft" title="Align Left">
+                        <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                            <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 27 27">
+		<path fill="#3f3f3c" d="M 2 1 L 2 5 L 14 5 L 14 11 L 2 11 L 2 16 L 20 16 L 20 22 L 2 22 L 2 26 L 1 26 L 1 1 L 2 1 ZM 27 0 L 0 0 L 0 27 L 27 27 L 27 0 Z"></path>
+	</svg>
+                        </svg>
+                    </div>
+                    <div class="draginput_cell" id="tool_aligncenter" title="Align Center">
+                        <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                            <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27">
+			<path fill="#3f3f3c" d="M 13 1 L 14 1 L 14 6 L 22 6 L 22 12 L 14 12 L 14 15 L 19 15 L 19 21 L 14 21 L 14 26 L 13 26 L 13 21 L 8 21 L 8 15 L 13 15 L 13 12 L 5 12 L 5 6 L 13 6 L 13 1 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z"></path>
+
+	</svg>
+                        </svg>
+                    </div>
+                    <div class="draginput_cell" id="tool_alignright" title="Align Right">
+                        <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                            <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27">
+		<path fill="#3f3f3c" d="M 25 1 L 25 5 L 13 5 L 13 11 L 25 11 L 25 16 L 7 16 L 7 22 L 25 22 L 25 26 L 26 26 L 26 1 L 25 1 ZM 0 0 L 27 0 L 27 27 L 0 27 L 0 0 Z"></path>
+	</svg>
+                        </svg>
+                    </div>
+                    <div class="draginput_cell" id="tool_aligntop" title="Align Top">
+                        <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                            <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="Untitled-Page%201">
+		<path fill="#3f3f3c" d="M 1 2 L 5 2 L 5 14 L 11 14 L 11 2 L 16 2 L 16 20 L 22 20 L 22 2 L 26 2 L 26 1 L 1 1 L 1 2 ZM 0 27 L 0 0 L 27 0 L 27 27 L 0 27 Z"></path>
+	</svg>
+                        </svg>
+                    </div>
+                    <div class="draginput_cell" id="tool_alignmiddle" title="Align Middle">
+                        <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                            <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="Untitled-Page%201">
+	<path fill="#3f3f3c" d="M 26 13 L 26 14 L 21 14 L 21 22 L 15 22 L 15 14 L 12 14 L 12 19 L 6 19 L 6 14 L 1 14 L 1 13 L 6 13 L 6 8 L 12 8 L 12 13 L 15 13 L 15 5 L 21 5 L 21 13 L 26 13 ZM 27 0 L 0 0 L 0 27 L 27 27 L 27 0 Z"></path>
+</svg>
+                        </svg>
+                    </div>
+                    <div class="draginput_cell" id="tool_alignbottom" title="Align Bottom">
+                        <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                             xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                            <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="Untitled-Page%201">
+	<path fill="#3f3f3c" d="M 1 25 L 5 25 L 5 13 L 11 13 L 11 25 L 16 25 L 16 7 L 22 7 L 22 25 L 26 25 L 26 26 L 1 26 L 1 25 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z"></path>
+</svg>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+
+        </div>
+
+        <div style="display: none;" id="stroke_panel" class="context_panel clearfix">
+            <div class="clearfix"></div>
+            <h4>Stroke</h4>
+            <div class="toolset" data-title="Change stroke">
+                <label class="draginput">
+                    <input data-cursor="true" data-domain="70" data-scale="1.4142857142857144" readonly="readonly"
+                           autocomplete="off" id="stroke_width" size="2" value="1.5" data-attr="stroke-width" min="0"
+                           max="99" step="1">
+                    <span class="icon_label">Stroke Width</span>
+                    <div style="top: 68.9394px;" class="draginput_cursor"></div>
+                </label>
+            </div>
+            <div class="stroke_tool draginput">
+                <span>Stroke Dash</span>
+                <select autocomplete="off" id="stroke_style" data-title="Change stroke dash style">
+                    <option selected="selected" value="none">—</option>
+                    <option value="2,2">···</option>
+                    <option value="5,5">- -</option>
+                    <option value="5,2,2,2">-·-</option>
+                    <option value="5,2,2,2,2,2">-··-</option>
+                </select>
+                <div class="caret"></div>
+                <label id="stroke_style_label">—</label>
+            </div>
+
+            <label style="display: none;">
+                <span class="icon_label">Stroke Join</span>
+            </label>
+
+            <label style="display: none;">
+                <span class="icon_label">Stroke Cap</span>
+            </label>
+        </div>
+
+    </div> <!-- tools_top -->
+    <div id="cur_context_panel">
+
+    </div>
+
+
+    <div id="tools_left" class="tools_panel">
+        <div class="loaded tool_button_current" id="tool_select" title="Select Tool  (V)">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg version="1.1" viewBox="0 0 24 24">
+                    <g>
+                        <path d="M0,0v24h24V0H0z M17.147,20.757l-2.941,1.501l-3.677-6.005l-4.411,3.003V1.241l12.5,12.01l-4.412,1.501   L17.147,20.757z"
+                              fill="#2F2F2C"></path>
+                    </g>
+                </svg>
+            </svg>
+        </div>
+        <div class="tool_button loaded" id="tool_fhpath" title="Pencil Tool  (Q)">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg version="1.1" viewBox="0 0 24 24">
+                    <path d="M-1.5-1.5v27h27v-27 M19.616,9.216L6.647,21.567l-5.531,1.285l-0.1-0.094l1.449-5.269L15.438,5.204   c0.231-0.062,0.788-0.219,1.579-0.062L3.255,18.243l-0.394,1.381l1.58,1.504l1.481-0.375l0.66-0.598l0.065-1.408l-1.053-1.004   L18.203,5.736c0.196,0.157,0.196,0.157,0.396,0.376C20.476,7.869,19.616,9.216,19.616,9.216z M22.87,4.9   c-0.002,0.774-0.358,1.561-1.013,2.185l-1.217,1.16c0,0,0.921-1.348-0.989-3.103c-1.679-1.599-3.259-0.91-3.259-0.91l1.284-1.223   c1.154-1.126,3.161-1.126,4.278-0.062c0.622,0.549,0.913,1.239,0.915,1.938V4.9z"
+                          fill="#2F2F2C"></path>
+                </svg>
+            </svg>
+        </div>
+        <div class="loaded tool_button" id="tool_line" title="Line Tool  (L)">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="eye-Page%201">
+	<path fill="#2f2f2c" d="M 3 1 L 26 24 L 24 26 L 1 3 L 3 1 ZM 0 0 L 0 27 L 27 27 L 27 0 L 0 0 Z"></path>
+</svg>
+            </svg>
+        </div>
+        <div class="loaded tool_button" id="tool_rect" title="Square/Rect Tool  (R)">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="eye-Page%201">
+	<path fill="#2f2f2c" d="M 0 25 L 0 27 L 27 27 L 27 25 L 0 25 ZM 0 0 L 0 8 L 27 8 L 27 0 L 0 0 Z"></path>
+</svg>
+            </svg>
+        </div>
+        <div class="loaded tool_button" id="tool_ellipse" title="Ellipse/Circle Tool  (C)">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="eye-Page%201">
+	<path d="M27,0H0v27h27 M13.25,7.617c6.742,0,12.207,3.846,12.207,8.59c0,4.745-5.465,8.591-12.207,8.591   S1.042,20.952,1.042,16.207C1.042,11.463,6.508,7.617,13.25,7.617z" fill="#2F2F2C"></path>
+</svg>
+            </svg>
+        </div>
+        <div class="loaded tool_button" id="tool_path" title="Path Tool  (P)">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="eye-Page%201">
+	<g id="Layer%201">
+		<path d="M0,0v27h27V0H0z M12.193,1.904c0-0.365,0.871,0,0.871,0v12.105c-0.509,0.18-0.871,0.664-0.871,1.233c0,0.722,0.585,1.305,1.307,1.305c0.722,0,1.307-0.583,1.307-1.305c0-0.569-0.362-1.054-0.871-1.233V1.904c0,0,0.871-0.365,0.871,0c0,6.811,5.226,11.677,5.226,11.677l-3.256,8.193h-6.552l-3.256-8.193C6.968,13.581,12.193,8.714,12.193,1.904z M7.839,25.258v-2.612h11.322v2.612H7.839z" fill="#2F2F2C"></path>
+	</g>
+</svg>
+            </svg>
+        </div>
+        <div data-curopt="#tool_shapelib" class="tool_button loaded" title="Shape library" id="tools_shapelib_show">
+            <div class="flyout_arrow_horiz">
+                <svg style="width: 5px; height: 5px;" class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink"
+                     height="27" width="27" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                    <svg viewBox="0 0 25 50" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+                        <path d="m0,0l0,50l25,-25l-25,-25z" fill="#ccc" stroke="none"></path>
+                    </svg>
+                </svg>
+            </div>
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink">
+                    <path d="M0,0v27h27V0H0z M20.328,24.166l-6.891-3.622l-6.891,3.622l1.316-7.672L2.289,11.06l7.704-1.121       l3.445-6.979l3.447,6.98l7.702,1.121l-5.573,5.434L20.328,24.166z"
+                          fill="#2F2F2C"></path>
+                </svg>
+            </svg>
+        </div>
+        <div class="tool_button loaded" id="tool_text" title="Text Tool  (T)">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="eye-Page%201">
+	<path d="M0,0v27h27V0H0z M7.283,25.258v-1.741h0.539c1.133,0,1.879-0.204,2.224-0.64c0.345-0.422,0.525-1.157,0.525-2.191V4.355H8.733c-1.105,0-1.906,0.123-2.417,0.367C5.791,4.967,5.362,5.443,5.017,6.151C4.658,6.873,4.451,7.73,4.381,8.709H2.613V2.613h21.774v6.097H22.48c-0.359-1.701-0.87-2.858-1.52-3.457s-1.686-0.898-3.108-0.898h-1.976v16.331c0,1.062,0.165,1.81,0.525,2.218c0.358,0.409,1.104,0.613,2.236,0.613h0.595v1.741H7.283z" fill="#2F2F2C"></path>
+</svg>
+            </svg>
+        </div>
+        <div class="tool_button loaded" id="tool_zoom" title="Zoom Tool  (Z)">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="eye-Page%201">
+	<circle r="6.532" cy="10.887" cx="10.887" fill="#2F2F2C"></circle>
+	<path d="M0,0v27h27V0H0z M15.373,18.856c-1.326,0.747-2.855,1.176-4.486,1.176c-5.051,0-9.145-4.095-9.145-9.145   c0-5.051,4.094-9.145,9.145-9.145c5.05,0,9.145,4.094,9.145,9.145c0,2.081-0.697,3.999-1.868,5.536l6.223,6.223l-2.612,2.612   L15.373,18.856z" fill="#2F2F2C"></path>
+</svg>
+            </svg>
+        </div>
+
+        <div class="tool_button loaded" title="Eye Dropper Tool [I]" id="tool_eyedropper">
+            <svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink" height="27" width="27"
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 27 27">
+                <svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="Untitled-Page%201">
+    <path d="M16.867,11.729l-1.5-1.49l-9.845,9.777c-0.198,0.919-0.653,1.838-1.104,2.585       c0.752-0.448,1.678-0.899,2.604-1.096L16.867,11.729z" fill="#2F2F2C"></path>
+    <path d="M0,0v27h27V0H0z M2.702,24.801l-0.5-0.496l-0.46-0.457l0.421-0.493c0.016-0.02,1.711-2.031,2.008-3.799     l0.037-0.222L14.367,9.247l-0.333-0.331c-0.459-0.457-0.459-1.198,0-1.655l1.5-1.489c0.46-0.457,1.206-0.457,1.667,0L19.7,3.289c0,0,2.5-2.482,3.833-1.158L24.2,2.792l0.667,0.662c0.28,0.278,0.391,0.609,0.391,0.957c0,1.302-1.558,2.849-1.558,2.849   l-2.5,2.482l0.167,0.166c0.46,0.457,0.46,1.197,0,1.655l-1.5,1.489c-0.46,0.456-1.207,0.456-1.667,0l-0.333-0.332L7.708,22.809l-0.223,0.037c-1.787,0.296-3.805,1.978-3.826,1.995l-0.496,0.417L2.702,24.801z" fill="#2F2F2C"></path>
+  </svg>
+            </svg>
+        </div>
+        <div id="color_tools">
+            <div id="tool_switch" title="Switch stroke and fill colors  (x)"></div>
+            <div class="color_tool active" id="tool_fill">
+                <label class="icon_label" title="Change fill color"></label>
+                <div class="color_block">
+                    <div id="fill_bg"></div>
+                    <div id="fill_color" class="color_block">
+                        <svg width="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="1" fill="#fff" height="100%" width="100%"></rect>
+                            <defs>
+                                <linearGradient id="gradbox_"></linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+
+            <div class="color_tool" id="tool_stroke">
+                <label class="icon_label" title="Change stroke color"></label>
+                <div class="color_block">
+                    <div id="stroke_bg"></div>
+                    <div id="stroke_color" class="color_block" title="Change stroke color">
+                        <svg width="100%" xmlns="http://www.w3.org/2000/svg">
+                            <rect opacity="1" fill="#000" height="100%" width="100%"></rect>
+                            <defs>
+                                <linearGradient id="gradbox_"></linearGradient>
+                            </defs>
+                        </svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> <!-- tools_left -->
+
+    <div id="tools_bottom" class="tools_panel">
+
+        <!-- Zoom buttons -->
+        <div id="zoom_panel" class="toolset" title="Change zoom level">
+            <div class="draginput select" id="zoom_label">
+      <span id="zoomLabel" class="zoom_tool icon_label"><svg class="svg_icon" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                             height="16" width="16" xmlns="http://www.w3.org/2000/svg"
+                                                             viewBox="0 0 27 27"><svg y="0px" x="0px" xml:space="preserve" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg" version="1.1" style="background-color:#ffffff00" viewBox="0 0 27 27" id="eye-Page%201">
+	<circle r="6.532" cy="10.887" cx="10.887" fill="#2F2F2C"></circle>
+	<path d="M0,0v27h27V0H0z M15.373,18.856c-1.326,0.747-2.855,1.176-4.486,1.176c-5.051,0-9.145-4.095-9.145-9.145   c0-5.051,4.094-9.145,9.145-9.145c5.05,0,9.145,4.094,9.145,9.145c0,2.081-0.697,3.999-1.868,5.536l6.223,6.223l-2.612,2.612   L15.373,18.856z" fill="#2F2F2C"></path>
+</svg></svg></span>
+                <select autocomplete="off" id="zoom_select">
+                    <option value="6">6%</option>
+                    <option value="12">12%</option>
+                    <option value="16">16%</option>
+                    <option value="25">25%</option>
+                    <option value="50">50%</option>
+                    <option value="75">75%</option>
+                    <option value="100" selected="selected">100%</option>
+                    <option value="150">150%</option>
+                    <option value="200">200%</option>
+                    <option value="300">300%</option>
+                    <option value="400">400%</option>
+                    <option value="600">600%</option>
+                    <option value="800">800%</option>
+                    <option value="1600">1600%</option>
+                </select>
+                <div class="caret"></div>
+                <input autocomplete="off" id="zoom" size="3" value="100" readonly="readonly" type="text">
+            </div>
+        </div>
+
+        <div id="tools_bottom_3">
+            <div id="palette" title="Click to change fill color, shift-click to change stroke color">
+                <div class="palette_item transparent" data-rgb="none"></div>
+                <div class="palette_item black" data-rgb="#000000"></div>
+                <div class="palette_item white" data-rgb="#ffffff"></div>
+                <div class="palette_item" style="background-color: #444444;" data-rgb="#444444"></div>
+                <div class="palette_item" style="background-color: #482816;" data-rgb="#482816"></div>
+                <div class="palette_item" style="background-color: #422C10;" data-rgb="#422C10"></div>
+                <div class="palette_item" style="background-color: #3B2F0E;" data-rgb="#3B2F0E"></div>
+                <div class="palette_item" style="background-color: #32320F;" data-rgb="#32320F"></div>
+                <div class="palette_item" style="background-color: #293414;" data-rgb="#293414"></div>
+                <div class="palette_item" style="background-color: #1F361B;" data-rgb="#1F361B"></div>
+                <div class="palette_item" style="background-color: #153723;" data-rgb="#153723"></div>
+                <div class="palette_item" style="background-color: #0C372C;" data-rgb="#0C372C"></div>
+                <div class="palette_item" style="background-color: #083734;" data-rgb="#083734"></div>
+                <div class="palette_item" style="background-color: #0E353B;" data-rgb="#0E353B"></div>
+                <div class="palette_item" style="background-color: #1A333F;" data-rgb="#1A333F"></div>
+                <div class="palette_item" style="background-color: #273141;" data-rgb="#273141"></div>
+                <div class="palette_item" style="background-color: #332D40;" data-rgb="#332D40"></div>
+                <div class="palette_item" style="background-color: #3E2A3C;" data-rgb="#3E2A3C"></div>
+                <div class="palette_item" style="background-color: #462735;" data-rgb="#462735"></div>
+                <div class="palette_item" style="background-color: #4B252D;" data-rgb="#4B252D"></div>
+                <div class="palette_item" style="background-color: #4D2425;" data-rgb="#4D2425"></div>
+                <div class="palette_item" style="background-color: #4C261D;" data-rgb="#4C261D"></div>
+                <div class="palette_item" style="background-color: #666666;" data-rgb="#666666"></div>
+                <div class="palette_item" style="background-color: #845335;" data-rgb="#845335"></div>
+                <div class="palette_item" style="background-color: #7B572D;" data-rgb="#7B572D"></div>
+                <div class="palette_item" style="background-color: #6F5C2A;" data-rgb="#6F5C2A"></div>
+                <div class="palette_item" style="background-color: #62612C;" data-rgb="#62612C"></div>
+                <div class="palette_item" style="background-color: #546433;" data-rgb="#546433"></div>
+                <div class="palette_item" style="background-color: #46673D;" data-rgb="#46673D"></div>
+                <div class="palette_item" style="background-color: #396849;" data-rgb="#396849"></div>
+                <div class="palette_item" style="background-color: #306856;" data-rgb="#306856"></div>
+                <div class="palette_item" style="background-color: #2D6862;" data-rgb="#2D6862"></div>
+                <div class="palette_item" style="background-color: #33666C;" data-rgb="#33666C"></div>
+                <div class="palette_item" style="background-color: #426373;" data-rgb="#426373"></div>
+                <div class="palette_item" style="background-color: #535F75;" data-rgb="#535F75"></div>
+                <div class="palette_item" style="background-color: #645A73;" data-rgb="#645A73"></div>
+                <div class="palette_item" style="background-color: #74556D;" data-rgb="#74556D"></div>
+                <div class="palette_item" style="background-color: #805064;" data-rgb="#805064"></div>
+                <div class="palette_item" style="background-color: #884D58;" data-rgb="#884D58"></div>
+                <div class="palette_item" style="background-color: #8B4D4B;" data-rgb="#8B4D4B"></div>
+                <div class="palette_item" style="background-color: #894F3F;" data-rgb="#894F3F"></div>
+                <div class="palette_item" style="background-color: #999999;" data-rgb="#999999"></div>
+                <div class="palette_item" style="background-color: #C48157;" data-rgb="#C48157"></div>
+                <div class="palette_item" style="background-color: #B8874D;" data-rgb="#B8874D"></div>
+                <div class="palette_item" style="background-color: #A98E49;" data-rgb="#A98E49"></div>
+                <div class="palette_item" style="background-color: #97944B;" data-rgb="#97944B"></div>
+                <div class="palette_item" style="background-color: #849854;" data-rgb="#849854"></div>
+                <div class="palette_item" style="background-color: #729C62;" data-rgb="#729C62"></div>
+                <div class="palette_item" style="background-color: #619E73;" data-rgb="#619E73"></div>
+                <div class="palette_item" style="background-color: #559E84;" data-rgb="#559E84"></div>
+                <div class="palette_item" style="background-color: #529D94;" data-rgb="#529D94"></div>
+                <div class="palette_item" style="background-color: #5B9BA2;" data-rgb="#5B9BA2"></div>
+                <div class="palette_item" style="background-color: #6D97AB;" data-rgb="#6D97AB"></div>
+                <div class="palette_item" style="background-color: #8391AE;" data-rgb="#8391AE"></div>
+                <div class="palette_item" style="background-color: #9A8AAB;" data-rgb="#9A8AAB"></div>
+                <div class="palette_item" style="background-color: #AF84A3;" data-rgb="#AF84A3"></div>
+                <div class="palette_item" style="background-color: #BF7E96;" data-rgb="#BF7E96"></div>
+                <div class="palette_item" style="background-color: #C97A86;" data-rgb="#C97A86"></div>
+                <div class="palette_item" style="background-color: #CE7975;" data-rgb="#CE7975"></div>
+                <div class="palette_item" style="background-color: #CC7C65;" data-rgb="#CC7C65"></div>
+                <div class="palette_item" style="background-color: #BBBBBB;" data-rgb="#BBBBBB"></div>
+                <div class="palette_item" style="background-color: #FFB27C;" data-rgb="#FFB27C"></div>
+                <div class="palette_item" style="background-color: #FABA6F;" data-rgb="#FABA6F"></div>
+                <div class="palette_item" style="background-color: #E6C36A;" data-rgb="#E6C36A"></div>
+                <div class="palette_item" style="background-color: #CFCA6D;" data-rgb="#CFCA6D"></div>
+                <div class="palette_item" style="background-color: #B8D078;" data-rgb="#B8D078"></div>
+                <div class="palette_item" style="background-color: #A0D58A;" data-rgb="#A0D58A"></div>
+                <div class="palette_item" style="background-color: #8CD79F;" data-rgb="#8CD79F"></div>
+                <div class="palette_item" style="background-color: #7DD8B5;" data-rgb="#7DD8B5"></div>
+                <div class="palette_item" style="background-color: #7AD6CA;" data-rgb="#7AD6CA"></div>
+                <div class="palette_item" style="background-color: #84D3DB;" data-rgb="#84D3DB"></div>
+                <div class="palette_item" style="background-color: #9ACEE6;" data-rgb="#9ACEE6"></div>
+                <div class="palette_item" style="background-color: #B6C7EA;" data-rgb="#B6C7EA"></div>
+                <div class="palette_item" style="background-color: #D3BEE7;" data-rgb="#D3BEE7"></div>
+                <div class="palette_item" style="background-color: #EDB6DC;" data-rgb="#EDB6DC"></div>
+                <div class="palette_item" style="background-color: #FFAFCC;" data-rgb="#FFAFCC"></div>
+                <div class="palette_item" style="background-color: #FFAAB8;" data-rgb="#FFAAB8"></div>
+                <div class="palette_item" style="background-color: #FFA9A2;" data-rgb="#FFA9A2"></div>
+                <div class="palette_item" style="background-color: #FFAC8D;" data-rgb="#FFAC8D"></div>
+                <div class="palette_item" style="background-color: #DDDDDD;" data-rgb="#DDDDDD"></div>
+                <div class="palette_item" style="background-color: #FFE7A2;" data-rgb="#FFE7A2"></div>
+                <div class="palette_item" style="background-color: #FFF093;" data-rgb="#FFF093"></div>
+                <div class="palette_item" style="background-color: #FFFA8D;" data-rgb="#FFFA8D"></div>
+                <div class="palette_item" style="background-color: #FFFF91;" data-rgb="#FFFF91"></div>
+                <div class="palette_item" style="background-color: #EEFF9F;" data-rgb="#EEFF9F"></div>
+                <div class="palette_item" style="background-color: #D1FFB4;" data-rgb="#D1FFB4"></div>
+                <div class="palette_item" style="background-color: #B9FFCE;" data-rgb="#B9FFCE"></div>
+                <div class="palette_item" style="background-color: #A8FFE9;" data-rgb="#A8FFE9"></div>
+                <div class="palette_item" style="background-color: #A4FFFF;" data-rgb="#A4FFFF"></div>
+                <div class="palette_item" style="background-color: #B1FFFF;" data-rgb="#B1FFFF"></div>
+                <div class="palette_item" style="background-color: #CBFFFF;" data-rgb="#CBFFFF"></div>
+                <div class="palette_item" style="background-color: #EDFFFF;" data-rgb="#EDFFFF"></div>
+                <div class="palette_item" style="background-color: #FFF5FF;" data-rgb="#FFF5FF"></div>
+                <div class="palette_item" style="background-color: #FFEBFF;" data-rgb="#FFEBFF"></div>
+                <div class="palette_item" style="background-color: #FFE2FF;" data-rgb="#FFE2FF"></div>
+                <div class="palette_item" style="background-color: #FFDCEC;" data-rgb="#FFDCEC"></div>
+                <div class="palette_item" style="background-color: #FFDBD2;" data-rgb="#FFDBD2"></div>
+                <div class="palette_item" style="background-color: #FFDFB8;" data-rgb="#FFDFB8"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- hidden divs -->
+    <div id="color_picker"></div>
+
+    <div style="left: 34px; top: 335px; margin-top: -162px; margin-left: 3px; display: none;" id="tools_shapelib"
+         class="tools_flyout">
+        <div id="shape_cats">
+            <div class="current" data-cat="basic">Basic</div>
+            <div data-cat="object">Objects</div>
+            <div data-cat="symbol">Symbols</div>
+            <div data-cat="arrow">Arrows</div>
+            <div data-cat="flowchart">Flowchart</div>
+            <div data-cat="nature">Nature</div>
+            <div data-cat="game">Cards &amp; Chess</div>
+            <div data-cat="dialog_balloon">Dialog balloons</div>
+            <div data-cat="music">Music</div>
+            <div data-cat="weather">Weather &amp; Time</div>
+            <div data-cat="ui">User Interface</div>
+            <div data-cat="social">Social Web</div>
+        </div>
+        <div id="shape_buttons">
+            <div title="star_points_5" id="shapelib_star_points_5" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,116.58409l113.82668,0l35.17332,-108.13487l35.17334,108.13487l113.82666,0l-92.08755,66.83026l35.17514,108.13487l-92.08759,-66.83208l-92.08757,66.83208l35.17515,-108.13487l-92.08758,-66.83026z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="donut" id="shapelib_donut" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,150l0,0c0,-82.29042 66.70958,-149 149,-149l0,0c39.51724,0 77.41599,15.69816 105.35889,43.64108c27.94293,27.94293 43.64111,65.84165 43.64111,105.35892l0,0c0,82.29041 -66.70958,149 -149,149l0,0c-82.29041,0 -149,-66.70959 -149,-149zm74.5,0l0,0c0,41.1452 33.35481,74.5 74.5,74.5c41.14522,0 74.5,-33.3548 74.5,-74.5c0,-41.1452 -33.3548,-74.5 -74.5,-74.5l0,0c-41.14519,0 -74.5,33.35481 -74.5,74.5z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="triangle" id="shapelib_triangle" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,280.375l149,-260.75l149,260.75z" stroke-width="10" stroke="transparent"
+                              fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="right_triangle" id="shapelib_right_triangle" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,299l0,-298l298,298z" stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="diamond" id="shapelib_diamond" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,150l149,-149l149,149l-149,149l-149,-149z" stroke-width="10" stroke="transparent"
+                              fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="pentagon" id="shapelib_pentagon" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1.00035,116.97758l148.99963,-108.4053l148.99998,108.4053l-56.91267,175.4042l-184.1741,0l-56.91284,-175.4042z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="hexagon" id="shapelib_hexagon" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,149.99944l63.85715,-127.71428l170.28572,0l63.85713,127.71428l-63.85713,127.71428l-170.28572,0l-63.85715,-127.71428z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="septagon1" id="shapelib_septagon1" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m0.99917,191.06511l29.51249,-127.7108l119.48833,-56.83673l119.48836,56.83673l29.51303,127.7108l-82.69087,102.41679l-132.62103,0l-82.69031,-102.41679z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="heptagon" id="shapelib_heptagon" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,88.28171l87.28172,-87.28171l123.43653,0l87.28172,87.28171l0,123.43654l-87.28172,87.28172l-123.43653,0l-87.28172,-87.28172l0,-123.43654z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="decagon" id="shapelib_decagon" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,150.00093l28.45646,-88.40318l74.49956,-54.63682l92.08794,0l74.50002,54.63682l28.45599,88.40318l-28.45599,88.40318l-74.50002,54.63681l-92.08794,0l-74.49956,-54.63681l-28.45646,-88.40318z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="dodecagon" id="shapelib_dodecagon" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,110.07421l39.92579,-69.14842l69.14842,-39.92579l79.85159,0l69.14842,39.92579l39.92578,69.14842l0,79.85159l-39.92578,69.14842l-69.14842,39.92578l-79.85159,0l-69.14842,-39.92578l-39.92579,-69.14842l0,-79.85159z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="trapezoid" id="shapelib_trapezoid" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1,299l55.875,-298l186.25001,0l55.87498,298z" stroke-width="10" stroke="transparent"
+                              fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="dialog_balloon_1" id="shapelib_dialog_balloon_1" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m0.99786,35.96579l0,0c0,-19.31077 15.28761,-34.96524 34.14583,-34.96524l15.52084,0l0,0l74.50001,0l139.68748,0c9.05606,0 17.74118,3.68382 24.14478,10.24108c6.40356,6.55726 10.00107,15.45081 10.00107,24.72416l0,87.41311l0,0l0,52.44785l0,0c0,19.31078 -15.2876,34.96524 -34.14584,34.96524l-139.68748,0l-97.32507,88.90848l22.82506,-88.90848l-15.52084,0c-18.85822,0 -34.14583,-15.65446 -34.14583,-34.96524l0,0l0,-52.44785l0,0z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="heart" id="shapelib_heart" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m150,73c61,-175 300,0 0,225c-300,-225 -61,-400 0,-225z" stroke-width="10"
+                              stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="cylinder" id="shapelib_cylinder" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m299.0007,83.77844c0,18.28676 -66.70958,33.11111 -149.00002,33.11111m149.00002,-33.11111l0,0c0,18.28676 -66.70958,33.11111 -149.00002,33.11111c-82.29041,0 -148.99997,-14.82432 -148.99997,-33.11111m0,0l0,0c0,-18.28674 66.70956,-33.1111 148.99997,-33.1111c82.29044,0 149.00002,14.82436 149.00002,33.1111l0,132.44449c0,18.28674 -66.70958,33.11105 -149.00002,33.11105c-82.29041,0 -148.99997,-14.82431 -148.99997,-33.11105z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="arrow_up" id="shapelib_arrow_up" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1.49805,149.64304l148.50121,-148.00241l148.50121,148.00241l-74.25061,0l0,148.71457l-148.5012,0l0,-148.71457z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="arrow_u_turn" id="shapelib_arrow_u_turn" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1.00059,299.00055l0,-167.62497l0,0c0,-72.00411 58.37087,-130.37499 130.375,-130.37499l0,0l0,0c34.57759,0 67.73898,13.7359 92.18906,38.18595c24.45006,24.45005 38.18593,57.61144 38.18593,92.18904l0,18.625l37.24997,0l-74.49995,74.50002l-74.50002,-74.50002l37.25,0l0,-18.625c0,-30.8589 -25.0161,-55.87498 -55.87498,-55.87498l0,0l0,0c-30.85892,0 -55.875,25.01608 -55.875,55.87498l0,167.62497z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="arrow_left_up" id="shapelib_arrow_left_up" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m0.99865,224.5l74.50004,-74.5l0,37.25l111.74991,0l0,-111.75l-37.25,0l74.5,-74.5l74.5,74.5l-37.25,0l0,186.25l-186.24989,0l0,37.25l-74.50005,-74.5z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="plaque" id="shapelib_plaque" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m-0.00197,49.94376l0,0c27.5829,0 49.94327,-22.36036 49.94327,-49.94327l199.76709,0l0,0c0,27.5829 22.36037,49.94327 49.94325,49.94327l0,199.7671l0,0c-27.58289,0 -49.94325,22.36034 -49.94325,49.94325l-199.76709,0c0,-27.58292 -22.36037,-49.94325 -49.94327,-49.94325z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="page" id="shapelib_page" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m249.3298,298.99744l9.9335,-39.73413l39.73413,-9.93355l-49.66763,49.66768l-248.33237,0l0,-298.00001l298.00001,0l0,248.33234"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="cross" id="shapelib_cross" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m0.99844,99.71339l98.71494,0l0,-98.71495l101.26279,0l0,98.71495l98.71495,0l0,101.2628l-98.71495,0l0,98.71494l-101.26279,0l0,-98.71494l-98.71494,0z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="divide" id="shapelib_divide" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m150,0.99785l0,0c25.17819,0 45.58916,20.41097 45.58916,45.58916c0,25.17821 -20.41096,45.58916 -45.58916,45.58916c-25.17822,0 -45.58916,-20.41093 -45.58916,-45.58916c0,-25.1782 20.41093,-45.58916 45.58916,-45.58916zm0,296.25203c-25.17822,0 -45.58916,-20.41095 -45.58916,-45.58917c0,-25.17819 20.41093,-45.58916 45.58916,-45.58916c25.17819,0 45.58916,20.41096 45.58916,45.58916c0,25.17822 -20.41096,45.58917 -45.58916,45.58917zm-134.06754,-193.71518l268.13507,0l0,91.17833l-268.13507,0z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="minus" id="shapelib_minus" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m0.99887,102.39503l297.49445,0l0,95.2112l-297.49445,0z" stroke-width="10"
+                              stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+            <div title="times" id="shapelib_times" class="tool_button">
+                <svg height="40" width="40" xmlns="http://www.w3.org/2000/svg">
+                    <svg viewBox="-15 -15 330 330">
+                        <path d="m1.00089,73.36786l72.36697,-72.36697l76.87431,76.87368l76.87431,-76.87368l72.36765,72.36697l-76.87433,76.87431l76.87433,76.87431l-72.36765,72.36765l-76.87431,-76.87433l-76.87431,76.87433l-72.36697,-72.36765l76.87368,-76.87431l-76.87368,-76.87431z"
+                              stroke-width="10" stroke="transparent" fill="#333"></path>
+                    </svg>
+                </svg>
+            </div>
+        </div>
+    </div>
+</div> <!-- svg_editor -->
+
+<div id="svg_source_editor">
+    <div id="svg_source_overlay"></div>
+    <div id="svg_source_container">
+        <div id="save_output_btns">
+            <p id="copy_save_note">拷贝以下内容，并将内容保存到 .svg 扩展的文件中。</p>
+            <button id="copy_save_done">完成</button>
+        </div>
+        <form>
+            <textarea id="svg_source_textarea" spellcheck="false"></textarea>
+        </form>
+        <div id="tool_source_back" class="toolbar_button">
+            <button id="tool_source_cancel" class="cancel">取消</button>
+            <button id="tool_source_save" class="ok">提交修改</button>
+        </div>
+    </div>
+</div>
+
+<div id="base_unit_container">
+    <select autocomplete="off" id="base_unit">
+        <option selected="selected" value="px">像素</option>
+        <option value="cm">厘米</option>
+        <option value="mm">毫米</option>
+        <option value="in">英寸</option>
+        <option value="pt">磅</option>
+        <option value="pc">pc</option>
+        <option value="em">em</option>
+        <option value="ex">ex</option>
+    </select>
+</div>
+
+<div id="dialog_box">
+    <div id="dialog_box_overlay"></div>
+    <div class="ui-draggable" id="dialog_container">
+        <div id="dialog_content"></div>
+        <div id="dialog_buttons"></div>
+    </div>
+</div>
+
+<ul style="top: 159px; left: 875px; display: none;" id="cmenu_canvas" class="contextMenu">
+    <li class=""><a href="#cut">剪切 <span class="shortcut">Ctrl+X;</span></a></li>
+    <li class=""><a href="#copy">复制<span class="shortcut">Ctrl+C</span></a></li>
+    <li class="disabled"><a href="#paste">粘贴<span class="shortcut">Ctrl+V</span></a></li>
+    <li class="separator"><a href="#delete">删除<span class="shortcut">⌫</span></a></li>
+    <li class="separator disabled"><a href="#group">合并<span class="shortcut">Ctrl+G</span></a></li>
+    <li class="disabled"><a href="#ungroup">解除合并<span class="shortcut">Ctrl+⇧G</span></a></li>
+    <li class="separator"><a href="#move_front">置于顶层<span class="shortcut">Ctrl+⇧↑</span></a></li>
+    <li class=""><a href="#move_up">置于上一层<span class="shortcut">Ctrl+↑</span></a></li>
+    <li class=""><a href="#move_down">置于下一层<span class="shortcut">Ctrl+↓</span></a></li>
+    <li class=""><a href="#move_back">置于底层<span class="shortcut">Ctrl+⇧↓</span></a></li>
+</ul>
+<div style="display:none;">
+    <script src="SVG%20%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E5%99%A8_files/z_stat.js" language="JavaScript"></script>
+    <script src="SVG%20%E5%9C%A8%E7%BA%BF%E7%BC%96%E8%BE%91%E5%99%A8_files/core.js" charset="utf-8"
+            type="text/javascript"></script>
+    <a href="http://www.cnzz.com/stat/website.php?web_id=1254569789" target="_blank" title="站长统计">站长统计</a>
+</div>
+
+
+<canvas style="display: none;"></canvas>
+</body>
+</html>
